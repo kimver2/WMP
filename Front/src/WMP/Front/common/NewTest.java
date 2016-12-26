@@ -69,7 +69,7 @@ public class NewTest {
   }
 
   @Test
-  public void banner_check() {
+  public void banner_check() throws InterruptedException {
 	  System.out.println("오늘의 혜택");
 		List<WebElement> tb = driver.findElements(By.xpath("//ul[@id='today_deal_banner']/li/a/img"));
 		int tbc = tb.size();
@@ -85,8 +85,8 @@ public class NewTest {
 //			takeScreenshotofpage(driver, screenpath + "404 error " + getDateTimeStamp()  + ".png");
 //		}
 //			driver.navigate().back();
-//		}
-//	  
+		}
+ 
   }
   
   
@@ -117,4 +117,4 @@ public class NewTest {
 
   
   
-}
+  }
