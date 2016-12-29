@@ -7,7 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import org.apache.bcel.generic.Select;
+
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
@@ -26,6 +27,8 @@ public class MainPage {
 	
 	private void assertEquals(int i, int size) {}
 	private void assertTrue(boolean selected) {}
+	private void assertFalse(boolean multiple) {}
+	private void assertEquals(String string, String text) {}
 	
 	
   @BeforeTest
@@ -143,9 +146,13 @@ public class MainPage {
 	  driver.findElement(By.xpath("//*[@id='btnControl']/span")).click();
 	  System.out.println("1:1 문의 작성");
 	
-	  WebElement selectElement = driver.findElement(By.xpath("//*[@id='q_type5']"));
 	  
-	  //Select make = new Select(driver.findElement(By.xpath("//*[@id='q_type5']")));
+	  //select box
+	  WebElement opt_mypage_qna = driver.findElement(By.id("q_type5"));
+	  Select qna = new Select(opt_mypage_qna);
+	  assertFalse(qna.isMultiple());
+	  qna.selectByVisibleText("구매상품 없음");
+	  assertEquals("구매상품 없음",qna.getFirstSelectedOption().getText());
 
 	  
 	  
@@ -162,6 +169,8 @@ public class MainPage {
   
   
 	  
+
+
 //	  WebElement radiobtn = driver.findElement(By.xpath("//*[@id='qna_view']/form/table/tbody/tr[1]/td/[@id='inp_mypage_radio']"));
 //	  
 //	  if (radiobtn.isEnabled())
